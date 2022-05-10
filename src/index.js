@@ -13,8 +13,8 @@ fs.readdirSync(path.join(__dirname, "routes")).forEach(function (file) {
     }
     require(path.join(__dirname, "routes", file))(app);
 });
-app.listen(3000, () => {
-    console.log('Node server is running on port 3000');
+app.listen(4000, () => {
+    console.log('Node server is running on port 4000');
 })
 // mySQL tables:
 // - shop.categories | id, name

@@ -10,6 +10,7 @@ CREATE TABLE shop_items_table (
   PRIMARY KEY (`id`)
 );
 
-INSERT INTO categories_table 
-  (id, item_name,category_id,price,image_url) 
+INSERT INTO shop_items_table 
+  (item_name,category_id,price,image_url) 
 VALUES
+("Apple","Fruit","£1.99","hksdh")

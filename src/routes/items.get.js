@@ -17,7 +17,7 @@ module.exports = function (app) {
                 res.json({ error: "something went wrong." })
             }
 
-            res.json({ facts: result })
+            res.json({ result })
 
         });
 
