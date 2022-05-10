@@ -8,14 +8,18 @@ var connection = mysql.createConnection({
 
 connection.connect();
 module.exports = function (app) {
-    app.post('/api/items/delete', (req, res, next) => {
-        query = `DELETE FROM shop_item_table WHERE name=? AND category_id=?`;
-        connection.query(query, [req.body.name, req.body.category_id], function (err, result, fields) {
+    app.get('/api/categories/', (req, res, next) => {
+
+
+        // sql to get all facts
+        connection.query(`SELECT * FROM shop_categories_table`, function (err, result, fields) {
             if (err) {
                 res.json({ error: "something went wrong." })
             }
-            res.json({ facts: result })
+
+            res.json({ result })
 
         });
-    })
+
+    });
 }

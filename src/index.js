@@ -7,27 +7,21 @@ const path = require('path')
 let router = express.Router()
 
 
-fs.readdirSync(path.join(__dirname, "routes")).forEach(function (file) {
+// Add all routes
+fs.readdirSync(path.join(__dirname, "routes/categories")).forEach(function (file) {
     if (file[0] === ".") {
         return;
     }
-    require(path.join(__dirname, "routes", file))(app);
+    require(path.join(__dirname, "routes/categories", file))(app);
 });
+fs.readdirSync(path.join(__dirname, "routes/items")).forEach(function (file) {
+    if (file[0] === ".") {
+        return;
+    }
+    require(path.join(__dirname, "routes/items", file))(app);
+});
+
 app.listen(4000, () => {
     console.log('Node server is running on port 4000');
 })
-// mySQL tables:
-// - shop.categories | id, name
-// - shop.items | id, name, category_id, price, image_url
 
-// API Routes:
-// - /api/items (GET): get all items
-// - /api/items (POST): add an item
-// - /api/items/:id (GET): get an item by id
-// - /api/items/:id (PATCH): update an item
-// - /api/items/:id (DELETE): delete an item
-// - /api/categories (GET): get all categories
-// - /api/categories (POST): add a category
-// - /api/categories/:id (GET): get a category by id
-// - /api/categories/:id (PATCH): update a category
-// - /api/categories/:id (DELETE): delete a category 
