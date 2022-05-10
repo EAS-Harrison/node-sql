@@ -8,11 +8,9 @@ var connection = mysql.createConnection({
 
 connection.connect();
 module.exports = function (app) {
-    app.get('/api/items', (req, res, next) => {
+    app.get('/api/items/:id', (req, res, next) => {
 
-
-        // sql to get all facts
-        connection.query(`SELECT * FROM shop_items_table`, function (err, result, fields) {
+        connection.query(`SELECT * FROM shop_item_table WHERE id=?`, function (err, result, fields) {
             if (err) {
                 res.json({ error: "something went wrong." })
             }
